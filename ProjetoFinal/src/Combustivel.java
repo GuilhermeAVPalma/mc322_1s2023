@@ -49,4 +49,14 @@ public class Combustivel {
         double distanciaPercorrida = quilometragemFinal - quilometragemInicial;
         return distanciaPercorrida / volume;
     }
+
+    @Override
+    public String toString() {
+        return "Combustivel{" +
+                "quilometragemInicial=" + quilometragemInicial +
+                ", quilometragemFinal=" + quilometragemFinal +
+                ", tipo='" + tipo + '\'' +
+                ", volume=" + volume +
+                '}';
+    }
 }

@@ -50,6 +50,4 @@ public class Peca {
 		return "Peca [valor=" + valor + ", modelo=" + modelo + ", nome=" + nome + ", fabricante=" + fabricante
 				+ ", dataTroca=" + dataTroca + "]";
 	}
-
-    
 }

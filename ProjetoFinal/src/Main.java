@@ -36,7 +36,7 @@ public class Main {
         frota.cadastrarVeiculo(carro1);
         frota.cadastrarVeiculo(carro2);
 
-        frota.cadastrarManutencao(new Revisao(dia10, dia10));
+        frota.cadastrarManutencao(new Revisao(dia10, dia10, false));
 
         Conserto conserto = new Conserto(dia31, dia31);
         conserto.adicionarPeca(new Peca(4999.99, "VM", "Motor", "Ford", dia10));

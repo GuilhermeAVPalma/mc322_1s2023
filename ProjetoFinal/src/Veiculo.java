@@ -196,6 +196,8 @@ public class Veiculo {
 				+ ", registrosCombustivel=" + registrosCombustivel + ", pneus=" + pneus + ", quilometragem="
 				+ quilometragem + "]";
 	}
-    
-    
+
+
+
+
 }

@@ -37,4 +37,18 @@ public class Pneu extends Peca {
     public int getPosicao() {
         return posicao;
     }
+
+    @Override
+    public String toString() {
+        return "Pneu{" +
+                "quilometragem=" + quilometragem +
+                ", marca='" + marca + '\'' +
+                ", posicao=" + posicao +
+                ", valor=" + valor +
+                ", modelo='" + modelo + '\'' +
+                ", nome='" + nome + '\'' +
+                ", fabricante='" + fabricante + '\'' +
+                ", dataTroca=" + dataTroca +
+                "} " + super.toString();
+    }
 }

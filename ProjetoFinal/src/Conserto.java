@@ -21,4 +21,13 @@ public class Conserto extends Manutencao{
         }
         return custo;
     }
+
+    @Override
+    public String toString() {
+        return "Conserto{" +
+                "listaPecas=" + listaPecas +
+                ", dataInicio=" + dataInicio +
+                ", dataFim=" + dataFim +
+                "} " + super.toString();
+    }
 }

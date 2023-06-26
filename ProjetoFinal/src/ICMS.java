@@ -35,4 +35,13 @@ public class ICMS implements Imposto {
 		return valor*valorVeiculo;
 	}
 
+
+	@Override
+	public String toString() {
+		return "ICMS{" +
+				"valor=" + valor +
+				", data=" + data +
+				", nomeImposto='" + nomeImposto + '\'' +
+				'}';
+	}
 }

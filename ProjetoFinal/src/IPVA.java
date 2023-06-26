@@ -35,5 +35,14 @@ public class IPVA implements Imposto {
 	public double calculaImposto(double valorVeiculo) {
 		return valor*valorVeiculo;
 	}
-	
+
+
+	@Override
+	public String toString() {
+		return "IPVA{" +
+				"valor=" + valor +
+				", data=" + data +
+				", nomeImposto='" + nomeImposto + '\'' +
+				'}';
+	}
 }
