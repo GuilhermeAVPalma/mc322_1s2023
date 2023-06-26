@@ -12,10 +12,12 @@ public class Veiculo {
     private ArrayList<TrocaOleo> trocasOleo;
     private ArrayList<Combustivel> registrosCombustivel;
     private ArrayList<Pneu> pneus;
-    private int quilometragem; 
+    private int quilometragem;
+    private double valorVeiculo;
 
     public Veiculo(String marca, String modelo, String cor, String placa, int ano, ArrayList<Peca> pecas, ArrayList<Imposto> impostos,
-            ArrayList<TrocaOleo> trocasOleo, ArrayList<Combustivel> registrosCombustivel, ArrayList<Pneu> pneus, int quilometragem) {
+            ArrayList<TrocaOleo> trocasOleo, ArrayList<Combustivel> registrosCombustivel, ArrayList<Pneu> pneus, int quilometragem,
+                   double valorVeiculo) {
         this.marca = marca;
         this.modelo = modelo;
         this.cor = cor;
@@ -27,7 +29,16 @@ public class Veiculo {
         this.registrosCombustivel = registrosCombustivel;
         this.pneus = pneus;
         this.quilometragem = quilometragem;
-    }   
+        this.valorVeiculo = valorVeiculo;
+    }
+
+    public double getValorVeiculo() {
+        return valorVeiculo;
+    }
+
+    public void setValorVeiculo(double valorVeiculo) {
+        this.valorVeiculo = valorVeiculo;
+    }
 
     public String getModelo() {
         return modelo;
@@ -168,6 +179,12 @@ public class Veiculo {
         for (Pneu pneu : pneus) {
             totalGasto += pneu.getValor();
         }
+
+        // Somar volume de combustivel
+        double volumeComb = 0.0;
+        for(Combustivel comb: registrosCombustivel)
+            volumeComb += comb.getVolume();
+        totalGasto += volumeComb*5.0;
 
         return totalGasto;
     }

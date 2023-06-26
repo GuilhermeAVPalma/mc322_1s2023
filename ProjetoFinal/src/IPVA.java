@@ -1,23 +1,19 @@
 import java.time.LocalDate;
 
 public class IPVA implements Imposto {
-	private double valor;
+	private final double valor;
 	private LocalDate data;
-	private final String nomeImposto = "IPVA";
-	
+	private final String nomeImposto;
+
 	public IPVA(double valor, LocalDate data) {
 		this.valor = valor;
 		this.data = data;
+		this.nomeImposto = "IPVA";
 	}
 
 	@Override
 	public double getValor() {
 		return valor;
-	}
-
-	@Override
-	public void setValor(double valor) {
-		this.valor = valor;
 	}
 
 	@Override

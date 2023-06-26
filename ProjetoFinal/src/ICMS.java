@@ -1,7 +1,7 @@
 import java.time.LocalDate;
 
 public class ICMS implements Imposto {
-	private double valor;
+	private final double valor;
 	private LocalDate data;
 	private final String nomeImposto = "ICMS";
 	
@@ -13,11 +13,6 @@ public class ICMS implements Imposto {
 	@Override
 	public double getValor() {
 		return valor;
-	}
-
-	@Override
-	public void setValor(double valor) {
-		this.valor = valor;
 	}
 
 	@Override

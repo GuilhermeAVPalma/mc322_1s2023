@@ -1,15 +1,16 @@
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class Frota {
    
     private String nome;
-	private List<Veiculo> listaVeiculo;
-    
+	private ArrayList<Veiculo> listaVeiculo;
+    private ArrayList<Manutencao> listaManutencoes;
+
     public Frota(String nome) {
         this.nome = nome;
         this.listaVeiculo = new ArrayList<Veiculo> () ;
+        this.listaManutencoes = new ArrayList<Manutencao> () ;
     }
 
     public String getNome() {
@@ -21,7 +22,7 @@ public class Frota {
     public List<Veiculo> getListaVeiculo() {
         return listaVeiculo;
     }
-    public void setListaVeiculo(List<Veiculo> listaVeiculo) {
+    public void setListaVeiculo(ArrayList<Veiculo> listaVeiculo) {
         this.listaVeiculo = listaVeiculo;
     }
 
@@ -37,10 +38,24 @@ public class Frota {
     
     public double gastoTotalFrota() {
     	double totalGasto = 0.0;
-    	for(Veiculo veiculo: listaVeiculo) 
+    	for(Veiculo veiculo: listaVeiculo)
     		totalGasto += veiculo.calcularGastosTotais();
-    	
+
+        totalGasto += 50.0*listaManutencoes.size();
+
     	return totalGasto;
     }
 
+    public void cadastrarManutencao(Manutencao man) {
+        listaManutencoes.add(man);
+    }
+
+    @Override
+    public String toString() {
+        return "Frota{" +
+                "nome='" + nome + '\'' +
+                ", listaVeiculo=" + listaVeiculo +
+                ", listaManutencoes=" + listaManutencoes +
+                '}';
+    }
 }
