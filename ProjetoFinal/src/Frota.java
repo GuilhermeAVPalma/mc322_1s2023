@@ -1,7 +1,8 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
-class Frota {
+public class Frota {
    
     private String nome;
 	private List<Veiculo> listaVeiculo;
@@ -24,9 +25,22 @@ class Frota {
         this.listaVeiculo = listaVeiculo;
     }
 
-    public void adicionarVeiculo (String marca, String modelo, String cor, String placa){
-        //chamar construtor de veiculo
+    public void cadastrarVeiculo (Veiculo veiculo){
+        listaVeiculo.add(veiculo);
     }
-
+    
+    public void listarVeiculos() {
+    	for (Veiculo veiculo: listaVeiculo) {
+    		System.out.println(veiculo + "\n");
+    	}
+    }
+    
+    public double gastoTotalFrota() {
+    	double totalGasto = 0.0;
+    	for(Veiculo veiculo: listaVeiculo) 
+    		totalGasto += veiculo.calcularGastosTotais();
+    	
+    	return totalGasto;
+    }
 
 }

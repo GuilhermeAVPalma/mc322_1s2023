@@ -1,28 +1,11 @@
-import java.util.List;
+import java.time.LocalDate;
 
-class Imposto {
-    private int ano;
-    private List<String> pagamentos;
+interface Imposto {
+	public double getValor();
+	public void setValor(double valor);
+	public LocalDate getData();
+	public void setData(LocalDate data);
+	public String getNomeImposto();
+	public double calculaImposto(double valorVeiculo);
 
-    public Imposto(int ano, List<String> pagamentos) {
-        this.ano = ano;
-        this.pagamentos = pagamentos;
-    }
-
-    public void setAno(int ano) {
-        this.ano = ano;
-    }
-
-    public void setPagamentos(List<String> pagamentos) {
-        this.pagamentos = pagamentos;
-    }
-        
-    public int getAno() {
-        return ano;
-    }
-
-    public List<String> getPagamentos() {
-        return pagamentos;
-    }
-  
 }

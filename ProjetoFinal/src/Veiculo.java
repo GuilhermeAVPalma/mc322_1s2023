@@ -1,21 +1,21 @@
-import java.util.List;
+import java.util.ArrayList;
 
-class Veiculo {
+public class Veiculo {
     
     private String marca;   
     private String modelo;
     private String cor;
 	private String placa;
     private int ano;    
-    private List<Peca> pecas;
-    private List<Imposto> impostos;
-    private List<TrocaOleo> trocasOleo;
-    private List<Combustivel> registrosCombustivel;
-    private List<Pneu> pneus;
+    private ArrayList<Peca> pecas;
+    private ArrayList<Imposto> impostos;
+    private ArrayList<TrocaOleo> trocasOleo;
+    private ArrayList<Combustivel> registrosCombustivel;
+    private ArrayList<Pneu> pneus;
     private int quilometragem; 
 
-    public Veiculo(String marca, String modelo, String cor, String placa, int ano, List<Peca> pecas, List<Imposto> impostos,
-            List<TrocaOleo> trocasOleo, List<Combustivel> registrosCombustivel, List<Pneu> pneus, int quilometragem) {
+    public Veiculo(String marca, String modelo, String cor, String placa, int ano, ArrayList<Peca> pecas, ArrayList<Imposto> impostos,
+            ArrayList<TrocaOleo> trocasOleo, ArrayList<Combustivel> registrosCombustivel, ArrayList<Pneu> pneus, int quilometragem) {
         this.marca = marca;
         this.modelo = modelo;
         this.cor = cor;
@@ -61,34 +61,34 @@ class Veiculo {
     public void setAno(int ano) {
         this.ano = ano;
     }
-    public List<Peca> getPecas() {
+    public ArrayList<Peca> getPecas() {
         return pecas;
     }
-    public void setPecas(List<Peca> pecas) {
+    public void setPecas(ArrayList<Peca> pecas) {
         this.pecas = pecas;
     }
-    public List<Imposto> getImpostos() {
+    public ArrayList<Imposto> getImpostos() {
         return impostos;
     }
-    public void setImpostos(List<Imposto> impostos) {
+    public void setImpostos(ArrayList<Imposto> impostos) {
         this.impostos = impostos;
     }
-    public List<TrocaOleo> getTrocasOleo() {
+    public ArrayList<TrocaOleo> getTrocasOleo() {
         return trocasOleo;
     }
-    public void setTrocasOleo(List<TrocaOleo> trocasOleo) {
+    public void setTrocasOleo(ArrayList<TrocaOleo> trocasOleo) {
         this.trocasOleo = trocasOleo;
     }
-    public List<Combustivel> getRegistrosCombustivel() {
+    public ArrayList<Combustivel> getRegistrosCombustivel() {
         return registrosCombustivel;
     }
-    public void setRegistrosCombustivel(List<Combustivel> registrosCombustivel) {
+    public void setRegistrosCombustivel(ArrayList<Combustivel> registrosCombustivel) {
         this.registrosCombustivel = registrosCombustivel;
     }
-    public List<Pneu> getPneus() {
+    public ArrayList<Pneu> getPneus() {
         return pneus;
     }
-    public void setPneus(List<Pneu> pneus) {
+    public void setPneus(ArrayList<Pneu> pneus) {
         this.pneus = pneus;
     }
     public int getQuilometragem() {
@@ -97,56 +97,88 @@ class Veiculo {
     public void setQuilometragem(int quilometragem) {
         this.quilometragem = quilometragem;
     }
-    
     public void adicionarPeca(Peca peca) {
         pecas.add(peca);
     }
-
     public void adicionarImposto(Imposto imposto) {
         impostos.add(imposto);
     }
-
     public void adicionarTrocaOleo(TrocaOleo trocaOleo) {
         trocasOleo.add(trocaOleo);
     }
-
     public void adicionarRegistroCombustivel(Combustivel combustivel) {
         registrosCombustivel.add(combustivel);
     }
-
     public void adicionarPneu(Pneu pneu) {
         pneus.add(pneu);
     } 
     
-    // public double calcularGastosTotais() {
-    //     double totalGasto = 0.0;
+    public void listarPecas() {
+    	for(Peca p: pecas) {
+    		System.out.println(p + "\n");
+    	}
+    }
+    
+    public double rendimentoCombustivel() {
+    	int quilometros = 0;
+    	double volume = 0.0;
+    	for(Combustivel comb: registrosCombustivel) {
+    		quilometros += (comb.getQuilometragemFinal() - comb.getQuilometragemInicial());
+    		volume += comb.getVolume();
+    	}
+    	
+    	Double rendimento = 1.0*quilometros / volume;
+    	return rendimento;
+    }
+    
+    public void cadastrarTrocaOleo(TrocaOleo t) { 
+    	trocasOleo.add(t);
+    }
+    
+    public void cadastrarTrocaPneu(Pneu p) {
+    	int posicao = p.getPosicao();
+    	for (Pneu pneu: pneus) {
+    		if(pneu.getPosicao() == posicao) {
+    			pneus.remove(pneu);
+    			pneus.add(p);
+    			break;
+    		}
+    	}
+    }
+    
+    public double calcularGastosTotais() {
+        double totalGasto = 0.0;
 
-    //     // Somar valores das peças trocadas
-    //     for (Peca peca : pecas) {
-    //         totalGasto += peca.getValor();
-    //     }
+        // Somar valores das peças trocadas
+        for (Peca peca : pecas) {
+            totalGasto += peca.getValor();
+        }
 
-    //     // Somar valores dos impostos pagos
-    //     for (Imposto imposto : impostos) {
-    //         totalGasto += imposto.getValorTotal();
-    //     }
+        // Somar valores dos impostos pagos
+        for (Imposto imposto : impostos) {
+            totalGasto += imposto.getValor();
+        }
 
-    //     // Somar valores das trocas de óleo
-    //     for (TrocaOleo trocaOleo : trocasOleo) {
-    //         totalGasto += trocaOleo.getValor();
-    //     }
+        // Somar valores das trocas de óleo
+        for (TrocaOleo trocaOleo : trocasOleo) {
+            totalGasto += trocaOleo.getValor();
+        }
 
-    //     // Somar valores das trocas de pneus
-    //     for (Pneu pneu : pneus) {
-    //         totalGasto += pneu.getValor();
-    //     }
+        // Somar valores das trocas de pneus
+        for (Pneu pneu : pneus) {
+            totalGasto += pneu.getValor();
+        }
 
-    //     return totalGasto;
-    // }
+        return totalGasto;
+    }
 
     @Override
-    public String toString() {
-        return "Veiculo [marca=" + marca + ", modelo=" + modelo + ", cor=" + cor + ", placa=" + placa + ", ano=" + ano
-                + "]";
-    }
+	public String toString() {
+		return "Veiculo [marca=" + marca + ", modelo=" + modelo + ", cor=" + cor + ", placa=" + placa + ", ano=" + ano
+				+ ", pecas=" + pecas + ", impostos=" + impostos + ", trocasOleo=" + trocasOleo
+				+ ", registrosCombustivel=" + registrosCombustivel + ", pneus=" + pneus + ", quilometragem="
+				+ quilometragem + "]";
+	}
+    
+    
 }

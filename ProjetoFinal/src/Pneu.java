@@ -1,17 +1,20 @@
+import java.time.LocalDate;
 
-class Pneu {
+public class Pneu extends Peca {
     
 	private int quilometragem;
     private String marca;
-    private String posicao;
+    private int posicao;
 
-    public Pneu(int quilometragem, String marca, String posicao) {
-        this.quilometragem = quilometragem;
-        this.marca = marca;
-        this.posicao = posicao;
-    }
+    public Pneu(double valor, String modelo, String nome, String fabricante, LocalDate dataTroca, int quilometragem,
+			String marca, int posicao) {
+		super(valor, modelo, nome, fabricante, dataTroca);
+		this.quilometragem = quilometragem;
+		this.marca = marca;
+		this.posicao = posicao;
+	}
 
-    public void setQuilometragem(int quilometragem) {
+	public void setQuilometragem(int quilometragem) {
         this.quilometragem = quilometragem;
     }
 
@@ -19,7 +22,7 @@ class Pneu {
         this.marca = marca;
     }
 
-    public void setPosicao(String posicao) {
+    public void setPosicao(int posicao) {
         this.posicao = posicao;
     }    
 
@@ -31,7 +34,7 @@ class Pneu {
         return marca;
     }
 
-    public String getPosicao() {
+    public int getPosicao() {
         return posicao;
     }
 }

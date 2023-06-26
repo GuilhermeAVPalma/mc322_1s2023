@@ -1,5 +1,5 @@
 
-class Combustivel {
+public class Combustivel {
     
 	private int quilometragemInicial;
     private int quilometragemFinal;
