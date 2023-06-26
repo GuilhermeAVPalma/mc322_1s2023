@@ -129,7 +129,8 @@ public class Veiculo {
     		System.out.println(p + "\n");
     	}
     }
-    
+    // Calculo do rendimento medio de combustivel no veiculo onde
+    // Rendimento = (Distancia total percorrida) / (Litros de combustivel)
     public double rendimentoCombustivel() {
     	int quilometros = 0;
     	double volume = 0.0;

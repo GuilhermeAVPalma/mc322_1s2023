@@ -44,11 +44,6 @@ public class Combustivel {
     public double getVolume() {
         return volume;
     }
-    
-    public double calcularRendimento() {
-        double distanciaPercorrida = quilometragemFinal - quilometragemInicial;
-        return distanciaPercorrida / volume;
-    }
 
     @Override
     public String toString() {
